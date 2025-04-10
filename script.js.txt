@@ -1,0 +1,46 @@
+document.getElementById('formStunting').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const usia = parseInt(document.getElementById('usia').value);
+  const berat = parseFloat(document.getElementById('berat').value);
+  const tinggi = parseFloat(document.getElementById('tinggi').value);
+  const jenisKelamin = document.getElementById('jenisKelamin').value;
+
+  let status = '';
+  if ((jenisKelamin === 'laki-laki' && tinggi < (usia * 0.5)) ||
+      (jenisKelamin === 'perempuan' && tinggi < (usia * 0.48))) {
+    status = 'Stunting';
+  } else if (tinggi < (usia * 0.52)) {
+    status = 'Risiko Stunting';
+  } else {
+    status = 'Normal';
+  }
+
+  const rekomendasi = {
+    'Stunting': [
+      'Telur, ikan, daging',
+      'Susu dan produk olahannya',
+      'Sayuran hijau & buah kaya vitamin A',
+      'MPASI bergizi seimbang'
+    ],
+    'Risiko Stunting': [
+      'Makanan tinggi protein',
+      'ASI eksklusif (jika <6 bulan)',
+      'Pemberian vitamin dan mineral tambahan'
+    ],
+    'Normal': [
+      'Pertahankan pola makan sehat',
+      'Imunisasi & pemantauan tumbuh kembang',
+      'ASI & MPASI seimbang'
+    ]
+  };
+
+  let html = `<h2>Hasil Diagnosa: ${status}</h2>`;
+  html += `<h3>Rekomendasi Makanan:</h3><ul>`;
+  rekomendasi[status].forEach(m => {
+    html += `<li>${m}</li>`;
+  });
+  html += `</ul>`;
+
+  document.getElementById('hasil').innerHTML = html;
+});

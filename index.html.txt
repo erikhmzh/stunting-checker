@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Cek Risiko Stunting</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Cek Risiko Stunting Anak</h1>
+  <form id="formStunting">
+    <label>Usia (bulan): <input type="number" id="usia" required></label><br>
+    <label>Berat Badan (kg): <input type="number" id="berat" required></label><br>
+    <label>Tinggi Badan (cm): <input type="number" id="tinggi" required></label><br>
+    <label>Jenis Kelamin:
+      <select id="jenisKelamin" required>
+        <option value="laki-laki">Laki-laki</option>
+        <option value="perempuan">Perempuan</option>
+      </select>
+    </label><br><br>
+    <button type="submit">Cek</button>
+  </form>
+
+  <div id="hasil"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
